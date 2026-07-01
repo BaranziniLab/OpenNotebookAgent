@@ -1,0 +1,40 @@
+{
+  "name": "opennotebookagent",
+  "display_name": "OpenNotebookAgent",
+  "description": "MCP adapter for self-hosted or lab-hosted open-notebook systems, exposing guarded notebook entry search, retrieval, and provenance checks.",
+  "version": "0.1.0",
+  "entry_point": "opennotebookagent",
+  "repository": "https://github.com/BaranziniLab/OpenNotebookAgent",
+  "license": "Apache-2.0",
+  "tools_count": 4,
+  "env_vars": [
+    {
+      "key": "OPEN_NOTEBOOK_BASE_URL",
+      "required": true,
+      "auto_propagate": true,
+      "description": "Open notebook API base URL",
+      "secret": false
+    },
+    {
+      "key": "OPEN_NOTEBOOK_TOKEN",
+      "required": false,
+      "auto_propagate": false,
+      "description": "Open notebook bearer token if required",
+      "secret": true
+    },
+    {
+      "key": "OPEN_NOTEBOOK_LOG_LEVEL",
+      "required": false,
+      "auto_propagate": true,
+      "default": "INFO",
+      "description": "Logging level",
+      "secret": false
+    }
+  ],
+  "skills": [
+    {
+      "name": "open-notebook-research",
+      "description": "Use OpenNotebookAgent for Open Notebook platform-aware scientific workflow inspection and guarded API access."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "opennotebookagent"
+version = "0.1.0"
+description = "MCP adapter for self-hosted or lab-hosted open-notebook systems, exposing guarded notebook entry search, retrieval, and provenance checks."
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "Baranzini Lab", email = "wanjun.gu@ucsf.edu"}]
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=2.11.2",
+    "httpx>=0.28.1",
+    "pydantic>=2.11.7",
+]
+
+[project.scripts]
+opennotebookagent = "opennotebookagent.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/opennotebookagent"]
+
+[tool.uv]
+constraint-dependencies = [
+    "cryptography<49; sys_platform == 'darwin' and platform_machine == 'x86_64'",
+]
