@@ -1,0 +1,14 @@
+{
+  "kit_spec": 1,
+  "service": "opennotebook",
+  "service_title": "Open Notebook",
+  "kind": "tombstone",
+  "notice": {
+    "status": "retired",
+    "date": "2026-11-22",
+    "reason": "Biorouter's built-in Knowledge extension now holds notes and sources.",
+    "use_instead": "Use the built-in Knowledge extension."
+  },
+  "id": "opennotebookagent",
+  "display_name": "OpenNotebookAgent"
+}

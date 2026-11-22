@@ -1,42 +1,37 @@
 # OpenNotebookAgent
 
-MCP adapter for self-hosted or lab-hosted open-notebook systems, exposing guarded notebook entry search, retrieval, and provenance checks.
+Retired. This extension no longer calls an open-notebook server and only reports that it is retired. Remove it.
 
-This repository follows the BioRouter `.brxt` extension convention used by `SPOKEAgent` and `UCSFOMOPAgent`: a root `manifest.json`, Python package under `src/`, and optional bundled skills under `skills/`.
+Current version: **0.2.0**
+
+> **Retired.** OpenNotebookAgent was retired on 2026-11-22 and no longer calls any service. Why: Biorouter's built-in Knowledge extension now holds notes and sources. Use instead: Use the built-in Knowledge extension.
+
+This is the final release of a retired Biorouter extension. It replaces every
+earlier tool with one, `opennotebook_status`, which shows the notice above. It holds no
+credentials, reads no setting and calls no service. Remove the extension in
+Biorouter once you no longer need the notice.
 
 ## Tools
 
-- `get_opennotebookagent_status`: report configured environment variables without revealing secrets.
-- `get_opennotebookagent_request_plan`: explain whether an API request is read-only or requires explicit mutation approval.
-- `call_opennotebookagent_api`: call a platform API endpoint with write methods blocked unless `allow_mutation=true`.
-- `summarize_opennotebookagent_resource`: summarize a JSON export or API payload without making a network call.
+- `opennotebook_status`: shows why OpenNotebookAgent was retired and what to use instead. It calls no service.
 
-## Configuration
+## Bundled skills
 
-| Variable | Required | Secret | Purpose |
-|---|---:|---:|---|
-| `OPEN_NOTEBOOK_BASE_URL` | true | false | Open notebook API base URL |
-| `OPEN_NOTEBOOK_TOKEN` | false | true | Open notebook bearer token if required |
-| `OPEN_NOTEBOOK_LOG_LEVEL` | false | false | Logging level |
+Every skill an earlier release bundled is kept, and each now says where its content
+moved. An update never deletes a file an earlier version installed, so keeping the
+paths is what replaces the old instructions.
 
-
-## Build
+## Develop and release
 
 ```bash
 uv sync
-scripts/build_brxt.sh
+uv run python -m unittest discover -s tests -v
+uv run python scripts/build_brxt.py
 ```
 
-The bundle is written to `dist/opennotebookagent.brxt`.
-
-## Install in BioRouter
-
-```bash
-biorouter extension install dist/opennotebookagent.brxt
-```
-
-Add the required secrets with `--secret KEY=value` or configure them in the BioRouter UI.
+Do not edit `src/opennotebookagent/_kit/` or `tests/kit_testing/`: they are vendored from the BRXT
+adapter kit in the Biorouter repository (`scripts/brxt-adapter-kit/`).
 
 ## License
 
-Apache-2.0. See `LICENSE`.
+Apache-2.0. See `LICENSE` and `NOTICE`.

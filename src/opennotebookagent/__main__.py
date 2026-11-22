@@ -1,4 +1,4 @@
-from opennotebookagent.cli import main
+from opennotebookagent.server import main
 
 if __name__ == "__main__":
     main()
